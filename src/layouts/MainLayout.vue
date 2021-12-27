@@ -11,10 +11,11 @@
     </div>
   </div>
 </template>
+
 <script>
 import { CContainer } from "@coreui/vue";
-import Footer from "@/components/frontend/Footer.vue";
-import Header from "@/components/frontend/Header.vue";
+import Footer from "@/components/app/Footer.vue";
+import Header from "@/components/app/Header.vue";
 
 export default {
   name: "FrontLayout",
