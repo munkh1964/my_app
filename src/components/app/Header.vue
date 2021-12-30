@@ -1,35 +1,27 @@
 <template>
   <CHeader position="sticky" class="mb-4">
     <CContainer fluid class="app_header">
-      <CHeaderToggler class="ps-1" @click="$store.commit('toggleSidebar')">
-        <CIcon icon="cil-applications" size="lg" />
-      </CHeaderToggler>
-      <CHeaderNav class="d-none d-md-flex me-auto">
+      <CHeaderNav class="me-auto">
         <CNavItem>
-          <CNavLink href="/dashboard"> Dashboard </CNavLink>
+          <CNavLink href="/" active>Нүүр</CNavLink>
         </CNavItem>
         <CNavItem>
-          <CNavLink href="/products">Products</CNavLink>
+          <CNavLink href="/news">Мэдээ</CNavLink>
         </CNavItem>
         <CNavItem>
-          <CNavLink href="#">Settings</CNavLink>
+          <CNavLink href="/lessons">Хичээлүүд</CNavLink>
         </CNavItem>
       </CHeaderNav>
+
       <CHeaderNav>
         <CNavItem>
-          <CNavLink href="#">
-            <CIcon class="mx-2" icon="cil-bell" size="lg" />
-          </CNavLink>
-        </CNavItem>
-        <CNavItem>
-          <CNavLink href="#">
-            <CIcon class="mx-2" icon="cil-list" size="lg" />
-          </CNavLink>
-        </CNavItem>
-        <CNavItem>
-          <CNavLink href="#">
-            <CIcon class="mx-2" icon="cil-envelope-open" size="lg" />
-          </CNavLink>
+          <CNavLink href="/login">
+            <img
+              src="/assets/images/login.png"
+              alt="нэвтрэх"
+              width="24"
+              height="24"
+          /></CNavLink>
         </CNavItem>
       </CHeaderNav>
     </CContainer>
@@ -42,19 +34,17 @@
 
 <script>
 import AppBreadcrumb from "./AppBreadcrumb";
-// import AppHeaderDropdownAccnt from './AppHeaderDropdownAccnt'
-// import { logo } from '@/assets/brand/logo'
+import { useToggle } from "../../composition/toggle";
+
 export default {
   name: "AppHeader",
   components: {
     AppBreadcrumb,
     // AppHeaderDropdownAccnt,
   },
-  // setup() {
-  //   return {
-  //     logo,
-  //   }
-  // },
+  setup() {
+    return { ...useToggle() };
+  },
 };
 </script>
 

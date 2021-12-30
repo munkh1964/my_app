@@ -4,19 +4,46 @@ import Home from '../views/Home.vue'
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Нүүр',
     meta: { layout: 'main' },
     component: Home
   },
   {
-    path: '/products',
-    name: 'Products',
+    path: '/sales',
+    name: 'Борлуулалт',
     meta: { layout: 'main' },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "sales" */ '../views/Sales.vue')
+  },
+  {
+    path: '/purchases',
+    name: 'Нийлүүлэлт',
+    meta: { layout: 'main' },
+    component: () => import(/* webpackChunkName: "purchases" */ '../views/Purchases.vue')
+  },
+  {
+    path: '/products',
+    name: 'Бүтээгдхүүн',
+    meta: { layout: 'main' },
     component: () => import(/* webpackChunkName: "products" */ '../views/Products.vue')
-  }
+  },
+  {
+    path: '/stocks',
+    name: 'Хөрөнгө',
+    meta: { layout: 'main' },
+    component: () => import(/* webpackChunkName: "stocks" */ '../views/Stocks.vue')
+  },
+  {
+    path: '/accounts',
+    name: 'Санхүү',
+    meta: { layout: 'main' },
+    component: () => import(/* webpackChunkName: "accounts" */ '../views/Accounts.vue')
+  },
+  {
+    path: '/configs',
+    name: 'Тохиргоо',
+    meta: { layout: 'main' },
+    component: () => import(/* webpackChunkName: "configs" */ '../views/Configs.vue')
+  },
 ]
 
 const router = createRouter({

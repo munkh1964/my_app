@@ -1,49 +1,39 @@
 <template>
-  <div class="home">
+  <div v-if="userGroup === 'Admin'" class="home">
     <CContainer class="d-flex justify-content-center">
       <CRow>
-        <CCard class="bg-info" style="width: 10rem; margin: 0.5rem">
-          <CCardImage
-            orientation="top"
-            class="rounded mx-auto d-block"
-            src="/assets/images/ordering.png"
-          />
-          <CCardBody>
-            <CCardTitle class="text-center">Ordering</CCardTitle>
-          </CCardBody>
-        </CCard>
-        <CCard class="bg-warning" style="width: 10rem; margin: 0.5rem">
-          <CCardImage
-            orientation="top"
-            class="rounded mx-auto d-block"
-            src="/assets/images/customers.png"
-          />
-          <CCardBody>
-            <CCardTitle class="text-center">Customers</CCardTitle>
-          </CCardBody>
-        </CCard>
-        <CCard class="bg-warning" style="width: 10rem; margin: 0.5rem">
-          <CCardImage
-            orientation="top"
-            class="rounded mx-auto d-block"
-            src="/assets/images/finance.png"
-          />
-          <CCardBody class="bg-warning">
-            <CCardTitle class="text-center">Finance</CCardTitle>
-          </CCardBody>
-        </CCard>
-        <CCard class="bg-danger" style="width: 10rem; margin: 0.5rem">
-          <CCardImage
-            orientation="top"
-            class="rounded mx-auto d-block"
-            src="/assets/images/settings.png"
-          />
-          <CCardBody>
-            <CCardTitle class="text-center mt-2">Settings</CCardTitle>
-          </CCardBody>
-        </CCard>
+        <router-link
+          tag="div"
+          v-for="app in appList"
+          :key="app.name"
+          :to="app.url"
+          style="width: 10rem; margin: 0.5rem; text-decoration: none"
+        >
+          <CCard class="text-white" :class="app.bg" style="width: 9.5rem">
+            <CCardBody>
+              <CCardImage
+                orientation="top"
+                class="rounded mx-auto d-block"
+                :src="app.img"
+              />
+              <CCardTitle class="text-center">{{ app.name }}</CCardTitle>
+            </CCardBody>
+          </CCard>
+        </router-link>
       </CRow>
     </CContainer>
+  </div>
+
+  <div v-if="userGroup === 'Nibo'" class="home">
+    <h2>Nibo</h2>
+  </div>
+
+  <div v-if="userGroup === 'Saler'" class="home">
+    <h2>Saler</h2>
+  </div>
+
+  <div v-if="userGroup === 'Guest'" class="home">
+    <h2>Guest</h2>
   </div>
 </template>
 
@@ -51,10 +41,55 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 
+// import { ref } from "vue";
 export default {
   name: "Home",
+  computed: {
+    userGroup() {
+      return this.$store.getters.userGroup;
+    },
+  },
   setup() {
-    return {};
+    // let appList = ref([]);
+    const appList = [
+      {
+        name: "Борлуулалт",
+        url: "/sales",
+        img: "/assets/images/ordering.png",
+        bg: "bg-info",
+      },
+      {
+        name: "Нийлүүлэлт",
+        url: "/purchases",
+        img: "/assets/images/purchase.png",
+        bg: "bg-success",
+      },
+      {
+        name: "Бараа",
+        url: "/products",
+        img: "/assets/images/inventory.png",
+        bg: "bg-warning",
+      },
+      {
+        name: "Хөрөнгө",
+        url: "/stocks",
+        img: "/assets/images/stocks.png",
+        bg: "bg-primary",
+      },
+      {
+        name: "Санхүү",
+        url: "/accounts",
+        img: "/assets/images/account.png",
+        bg: "bg-secondary",
+      },
+      {
+        name: "Тохиргоо",
+        url: "/configs",
+        img: "/assets/images/settings.png",
+        bg: "bg-danger",
+      },
+    ];
+    return { appList };
   },
 };
 </script>
