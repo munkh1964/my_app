@@ -1,7 +1,7 @@
 <template>
   <div v-if="userGroup === 'Admin'" class="home">
-    <CContainer class="d-flex justify-content-center">
-      <CRow>
+    <div class="d-flex justify-content-center">
+      <div class="row">
         <router-link
           tag="div"
           v-for="app in appList"
@@ -9,19 +9,15 @@
           :to="app.url"
           style="width: 10rem; margin: 0.5rem; text-decoration: none"
         >
-          <CCard class="text-white" :class="app.bg" style="width: 9.5rem">
-            <CCardBody>
-              <CCardImage
-                orientation="top"
-                class="rounded mx-auto d-block"
-                :src="app.img"
-              />
-              <CCardTitle class="text-center">{{ app.name }}</CCardTitle>
-            </CCardBody>
-          </CCard>
+          <div class="card text-white" :class="app.bg" style="width: 9.5rem">
+            <div class="card-body">
+              <img class="card-img-top" :src="app.img" />
+              <h5 class="card-title text-center mt-2">{{ app.name }}</h5>
+            </div>
+          </div>
         </router-link>
-      </CRow>
-    </CContainer>
+      </div>
+    </div>
   </div>
 
   <div v-if="userGroup === 'Nibo'" class="home">
@@ -43,7 +39,7 @@
 
 // import { ref } from "vue";
 export default {
-  name: "Home",
+  name: "Apps",
   computed: {
     userGroup() {
       return this.$store.getters.userGroup;
@@ -95,43 +91,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @media (max-width: 575.98px) {
-//   div.card {
-//     width: 10rem;
-//     margin: 0.5rem;
-//   }
-//   div.card h5 {
-//     font-size: 2.5vw;
-//   }
-// }
-
-// @media (min-width: 576px) and (max-width: 767.98px) {
-//   div.card {
-//     width: 9rem;
-//     margin: 0.6rem;
-//   }
-// }
-
-// @media (min-width: 768px) and (max-width: 991.98px) {
-//   div.card {
-//     width: 11rem;
-//     margin: 0.6rem;
-//   }
-// }
-
-// @media screen and (min-width: 992px) and (max-width: 1199.98px) {
-//   div.card {
-//     width: 13rem;
-//     margin: 0.7rem;
-//   }
-// }
-
-// @media (min-width: 1200px) {
-//   div.card {
-//     width: 15rem;
-//     margin: 0.8rem;
-//   }
-// }
 </style>
 
 //  https://iconarchive.com/show/pretty-office-8-icons-by-custom-icon-design/Users-icon.html

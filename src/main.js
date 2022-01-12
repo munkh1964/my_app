@@ -8,17 +8,14 @@ import VueAxios from 'vue-axios'
 
 import { FontAwesomeIcon } from './plugins/font-awesome'
 
-import CoreuiVue from '@coreui/vue'
-import CIcon from '@coreui/icons-vue'
-import { iconsSet as icons } from '@/assets/icons'
+import 'bootstrap/dist/css/bootstrap.css'
 
 const app = createApp(App)
 app.use(store)
 app.use(router)
-app.use(CoreuiVue)
 app.use(VueAxios, axios)
-app.provide('icons', icons)
-app.component("font-awesome-icon", FontAwesomeIcon)
-app.component('CIcon', CIcon)
+app.component('fa', FontAwesomeIcon)
 
 app.mount('#app')
+
+import 'bootstrap/dist/js/bootstrap.js'

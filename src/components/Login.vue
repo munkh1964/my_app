@@ -63,12 +63,13 @@ export default {
   },
   computed: {
     loggedIn() {
+      console.log(this.$store.state);
       return this.$store.state.auth.status.loggedIn;
     },
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/profile");
+      this.$router.push("/products");
     }
   },
   methods: {
@@ -77,7 +78,7 @@ export default {
 
       this.$store.dispatch("auth/login", user).then(
         () => {
-          this.$router.push("/profile");
+          this.$router.push("/products");
         },
         (error) => {
           this.loading = false;

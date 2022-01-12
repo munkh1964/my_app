@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../components/Home.vue'
 
 const routes = [
   {
@@ -9,40 +9,58 @@ const routes = [
     component: Home
   },
   {
+    path: '/apps',
+    name: 'Модулиуд',
+    meta: { layout: 'main' },
+    component: () => import(/* webpackChunkName: "news" */ '../components/AppList.vue')
+  },
+  {
+    path: '/news',
+    name: 'Мэдээ',
+    meta: { layout: 'main' },
+    component: () => import(/* webpackChunkName: "news" */ '../components/News.vue')
+  },
+  {
+    path: '/login',
+    name: 'Нэвтрэх',
+    meta: { layout: 'main' },
+    component: () => import(/* webpackChunkName: "login" */ '../components/Login.vue')
+  },
+  {
     path: '/sales',
     name: 'Борлуулалт',
     meta: { layout: 'main' },
-    component: () => import(/* webpackChunkName: "sales" */ '../views/Sales.vue')
+    component: () => import(/* webpackChunkName: "sales" */ '../components/Sales.vue')
   },
   {
     path: '/purchases',
     name: 'Нийлүүлэлт',
     meta: { layout: 'main' },
-    component: () => import(/* webpackChunkName: "purchases" */ '../views/Purchases.vue')
+    component: () => import(/* webpackChunkName: "purchases" */ '../components/Purchases.vue')
   },
   {
     path: '/products',
     name: 'Бүтээгдхүүн',
     meta: { layout: 'main' },
-    component: () => import(/* webpackChunkName: "products" */ '../views/Products.vue')
+    component: () => import(/* webpackChunkName: "products" */ '../components/Products.vue')
   },
   {
     path: '/stocks',
     name: 'Хөрөнгө',
     meta: { layout: 'main' },
-    component: () => import(/* webpackChunkName: "stocks" */ '../views/Stocks.vue')
+    component: () => import(/* webpackChunkName: "stocks" */ '../components/Stocks.vue')
   },
   {
     path: '/accounts',
     name: 'Санхүү',
     meta: { layout: 'main' },
-    component: () => import(/* webpackChunkName: "accounts" */ '../views/Accounts.vue')
+    component: () => import(/* webpackChunkName: "accounts" */ '../components/Accounts.vue')
   },
   {
     path: '/configs',
     name: 'Тохиргоо',
     meta: { layout: 'main' },
-    component: () => import(/* webpackChunkName: "configs" */ '../views/Configs.vue')
+    component: () => import(/* webpackChunkName: "configs" */ '../components/Configs.vue')
   },
 ]
 

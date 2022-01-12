@@ -5,17 +5,14 @@ $enable-ltr: true;
 $enable-rtl: true;
 
 // Import styles
-@import "~@coreui/coreui/scss/coreui";
+// @import "~@coreui/coreui/scss/coreui";
 
 // Import Chart.js Tooltips
 // @import "~@coreui/chartjs/scss/tooltips";
 
 @import "layout";
-@import "example";
+// @import "example";
 
-
-@import "~ag-grid-community/dist/styles/ag-grid.css";
-@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 // If you want to add something do it here
 @import "custom";
